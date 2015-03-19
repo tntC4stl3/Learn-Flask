@@ -7,8 +7,9 @@ from .models import User
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
-    user = {'nickname': 'tntC4stl3'}  # fake user
+    user = g.user
     posts = [  # fake array of posts
         {
             'author': {'nickname': 'John'},
