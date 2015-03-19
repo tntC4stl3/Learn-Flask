@@ -40,6 +40,11 @@ def login():
                            providers=app.config['OPENID_PROVIDERS'])
 
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
+
 @oid.after_login
 def after_login(resp):
     if resp.email is None or resp.email == "":
